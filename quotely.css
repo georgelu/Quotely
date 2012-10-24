@@ -15,3 +15,7 @@ a#qlogo {
 	font-family:"Pacifico";
 	font-size:22px;
 }
+
+blockquote small.seesource:before {
+	content:"";
+}

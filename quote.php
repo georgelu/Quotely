@@ -33,18 +33,19 @@
 	<div data-role="content">	
 		<?php
 		include("config.php");
-			$query = "select * from quotely where category = 'news'";
+			$query = "select * from quotely where category = '" . $_GET['category'] . "'";
 			$result = mysql_query($query);
 		      // This tells you how many rows were returned
 			$num_rows = mysql_num_rows($result);
 
-			if ($row = mysql_fetch_assoc($result)) {
+			while ($row = mysql_fetch_assoc($result)) {
 				// You will get here is a table called sometable
 				// and a username test and password test exists. If it doesn’t exist
 				// you won’t land here.
 				echo "<blockquote id='quotation'>" . $row["quote"] . "</blockquote>";
 				echo "<cite id='speaker'><p><a href='" . $row['wikipedia'] . "'>-" . $row["speaker"] . "</p></cite>";
 				echo "<small id='source'><a href='" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
+				
 			} 
 		?>
 		
@@ -62,7 +63,7 @@
 </div><!-- /page one -->
 
 <!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
+<div data-role="popup" id="popup">
 
 	<div data-role="header" data-theme="c">
 		<h1>Share</h1>
@@ -115,7 +116,13 @@
 <script type="text/javascript">
 // This handles all the swiping between each page. You really
 // needn't understand it all.
+
+$.ajaxSetup ({
+	cache: false
+});
+
 $(document).on('pageshow', 'div:jqmData(role="page")', function(){
+
 
      var page = $(this), nextpage, prevpage;
      // check if the page being shown already has a binding

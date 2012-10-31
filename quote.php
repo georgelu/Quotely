@@ -18,27 +18,35 @@
 	
 <body> 
 
+	
+
 <!-- Start of first page: #one -->
 <div data-role="page" id="one" data-theme="c">
 
 	
 	<div data-role="header">
 		<a href="http://stanford.edu/~sanzovo/cgi-bin/Quotely/">q</a>
-		<h1 id="category">#HERE IS A CATEGORY#</h1>
+		<h1 id="category">News</h1>
 		<a href="#subcategories" id="subcategory" data-mini="true" data-role="button">More</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		
-		<blockquote id="quotation"> 
-			#HERE IS A QUOTATION#
-		</blockquote>
-		<cite id="speaker">
-			<p>- #HERE IS A SPEAKER#</p>
-		</cite>
-		<small id="source"> 
-			<a href="#">+ #HERE IS A SOURCE# &raquo;</a>
-		</small>
+		<?php
+		include("config.php");
+			$query = "select * from quotely where category = 'news'";
+			$result = mysql_query($query);
+		      // This tells you how many rows were returned
+			$num_rows = mysql_num_rows($result);
+
+			if ($row = mysql_fetch_assoc($result)) {
+				// You will get here is a table called sometable
+				// and a username test and password test exists. If it doesn’t exist
+				// you won’t land here.
+				echo "<blockquote id='quotation'>" . $row["quote"] . "</blockquote>";
+				echo "<cite id='speaker'><p>-" . $row["speaker"] . "</p></cite>";
+				echo "<small id='source'><a href='" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
+			} 
+		?>
 		
 	</div><!-- /content -->
 	

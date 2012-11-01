@@ -1,6 +1,7 @@
 <div id="content" data-role="content">	
 		<?php
 			include("config.php");
+
 			if ($id) {
 				$query = "select * from quotely where category = '" . $category . "' AND id = '" . $id ."'";
 			} else {

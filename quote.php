@@ -31,8 +31,11 @@
 		<h1 id="category">
 			<?php echo $_GET['category']; ?>
 		</h1>
+		<!--
 		<div class="ui-btn-right" data-role="collapsible" data-inset="true" data-iconpos="right" data-theme="a" data-content-theme="c">
-  		 <h1 id="category"><?php echo $_GET['category']; ?></h1>
+  		 -->
+  		 <!--<h1 id="category"><?php //echo $_GET['category']; ?></h1>-->
+  		 <!--
 	  		<ul>
 	    	  <li> <a href="quote.php?category=news">News </a></li>
 	    	  <li> <a href="quote.php?category=news&subcategory=science">Science </a></li>
@@ -44,12 +47,17 @@
 	          <li> <a href="quote.php?category=inspiration">Inspiration</a></li>
 
 	      </ul>
-		</div>  
+		</div> 
+		--> 
 	</div><!-- /header -->
 
 	<?php 
 		$query = "";
+
 		$id = $_GET['id'];
+		if (!$_GET['id']) {
+			$id = "1";
+		}
 		$category = $_GET['category'];
 		
 		include("content.php"); 

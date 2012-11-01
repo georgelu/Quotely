@@ -13,6 +13,12 @@
 	<script src="./jQuery/jquery-1.8.2.min.js"></script>
 	<script src="./jQuery/jquery.mobile-1.2.0.js"></script>
 
+	<!--<script type="text/javascript">
+		$("#content").swiperight(function() {
+	    alert("hi");
+		});
+	</script>-->
+
 </head> 
 
 	
@@ -25,15 +31,30 @@
 
 	
 	<div data-role="header">
-		<a href="http://stanford.edu/~sanzovo/cgi-bin/Quotely/">q</a>
-		<h1 id="category">News</h1>
+		<a href="index.html">q</a>
+		<h1 id="category">
+			<?php echo $_GET['category']; ?>
+		</h1>
 		<a href="#subcategories" id="subcategory" data-mini="true" data-role="button">More</a>
 	</div><!-- /header -->
+	<?php 
+		$query = "";
+		$id = $_GET['id'];
+		$category = $_GET['category'];
+		
+		include("content.php"); 
+	?>
 
-	<div data-role="content">	
+	<!--<div id="content" data-role="content">	
 		<?php
+		/*
 		include("config.php");
-			$query = "select * from quotely where category = '" . $_GET['category'] . "'";
+			$query = "";
+			if ($_GET['id']) {
+				$query = "select * from quotely where category = '" . $_GET['category'] . "' AND id = '" . $_GET['id'] ."'";
+			} else {
+				$query = "select * from quotely where category = '" . $_GET['category'] . "' AND id = '1'";
+			}
 			$result = mysql_query($query);
 		      // This tells you how many rows were returned
 			$num_rows = mysql_num_rows($result);
@@ -45,11 +66,39 @@
 				echo "<blockquote id='quotation'>" . $row["quote"] . "</blockquote>";
 				echo "<cite id='speaker'><p><a href='" . $row['wikipedia'] . "'>-" . $row["speaker"] . "</p></cite>";
 				echo "<small id='source'><a href='" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
-				
+
+
 			} 
+			*/
 		?>
 		
-	</div><!-- /content -->
+	</div>--><!-- /content -->
+	
+	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+			<ul>
+				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
+			</ul>
+		</div>
+	</div>
+
+	
+</div><!-- /page one -->
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="two" data-theme="c">
+
+	
+	<div data-role="header">
+		<a href="index.html">q</a>
+		<h1 id="category">News</h1>
+		<a href="#subcategories" id="subcategory" data-mini="true" data-role="button">More</a>
+	</div><!-- /header -->
+
+	<?php 
+		$query = "";
+		include("content.php"); 
+	?>
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
@@ -65,7 +114,7 @@
 <!-- Start of third page: #popup -->
 <div data-role="popup" id="popup">
 
-	<div data-role="header" data-theme="c">
+	<div data-role="header" data-theime="c">
 		<h1>Share</h1>
 	</div><!-- /header -->
 
@@ -117,10 +166,6 @@
 // This handles all the swiping between each page. You really
 // needn't understand it all.
 
-$.ajaxSetup ({
-	cache: false
-});
-
 $(document).on('pageshow', 'div:jqmData(role="page")', function(){
 
 
@@ -133,19 +178,22 @@ $(document).on('pageshow', 'div:jqmData(role="page")', function(){
             // bind
                 .on('swipeleft.paginate', function() {
                     console.log("binding to swipe-left on "+page.attr('id'));
-                    nextpage = page.next('div[data-role="page"]');
+                    window.location = "quote.php?id=<?=$id + 1?>&category=<?=$category?>";
+                    /*nextpage = page.next('div[data-role="page"]');
                     if (nextpage.length > 0) {
-                       $.mobile.changePage(nextpage,{transition: "slide"}, false, true);
-                        }
+                    	alert("hi");
+
+                        }*/
                     })
 
                 .on('swiperight.paginate', function(){
                     console.log("binding to swipe-right "+page.attr('id'));
-                    prevpage = page.prev('div[data-role="page"]');
+                    window.location = "quote.php?id=<?=$id + 1?>&category=<?=$category?>";
+                    /*prevpage = page.prev('div[data-role="page"]');
                     if (prevpage.length > 0) {
                         $.mobile.changePage(prevpage, {transition: "slide",
                         	reverse: true}, true, true);
-                        };
+                        };*/
 
                      });
             }

@@ -31,7 +31,7 @@
 
 	
 	<div data-role="header">
-		<a href="index.html">q</a>
+		<a href="index2.html">q</a>
 		<h1 id="category">
 			<?php echo $_GET['category']; ?>
 		</h1>
@@ -73,32 +73,6 @@
 		?>
 		
 	</div>--><!-- /content -->
-	
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-			<ul>
-				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
-			</ul>
-		</div>
-	</div>
-
-	
-</div><!-- /page one -->
-
-<!-- Start of first page: #one -->
-<div data-role="page" id="two" data-theme="c">
-
-	
-	<div data-role="header">
-		<a href="index.html">q</a>
-		<h1 id="category">News</h1>
-		<a href="#subcategories" id="subcategory" data-mini="true" data-role="button">More</a>
-	</div><!-- /header -->
-
-	<?php 
-		$query = "";
-		include("content.php"); 
-	?>
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="c">

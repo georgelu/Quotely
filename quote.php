@@ -28,7 +28,7 @@
 	<div data-role="header">
 		<a href="index2.html">q</a>
 		<h1 id="category">
-			<?php echo $_GET['category']; ?>
+			<!--<?php //echo $_GET['category']; ?>-->
 		</h1>
 		<!--
 		<div class="ui-btn-right" data-role="collapsible" data-inset="true" data-iconpos="right" data-theme="a" data-content-theme="c">
@@ -53,7 +53,7 @@
 		$category = $_GET['category'];
 	
 		include("content.php"); 
-		
+
 	?>
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
@@ -65,7 +65,6 @@
 		</div>
 	</div>
 
-	
 </div><!-- /page one -->
 
 <!-- Start of third page: #popup -->
@@ -93,12 +92,13 @@
 </div><!-- /page popup -->
 
 
+
+
 <script type="text/javascript">
 // This handles all the swiping between each page. You really
 // needn't understand it all.
 
 $(document).on('pageshow', 'div:jqmData(role="page")', function(){
-
 
      var page = $(this), nextpage, prevpage;
      // check if the page being shown already has a binding
@@ -109,7 +109,7 @@ $(document).on('pageshow', 'div:jqmData(role="page")', function(){
                 .on('swipeleft.paginate', function() {
                     console.log("binding to swipe-left on "+page.attr('id'));
                     
-                    window.location = "quote.php?category=<?=$category?>&id=<?=$id + 1?>";
+                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
                     /*nextpage = page.next('div[data-role="page"]');
                     if (nextpage.length > 0) {
                     	alert("hi");
@@ -120,7 +120,7 @@ $(document).on('pageshow', 'div:jqmData(role="page")', function(){
                 .on('swiperight.paginate', function(){
                     console.log("binding to swipe-right "+page.attr('id'));
                     
-                    window.location = "quote.php?category=<?=$category?>&id=<?=$id - 1?>";
+                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
                     /*prevpage = page.prev('div[data-role="page"]');
                     if (prevpage.length > 0) {
                         $.mobile.changePage(prevpage, {transition: "slide",
@@ -130,6 +130,17 @@ $(document).on('pageshow', 'div:jqmData(role="page")', function(){
                      });
             }
         });
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
 
 </script>
 

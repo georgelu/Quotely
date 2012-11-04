@@ -75,9 +75,9 @@
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="a">	
-		<h2>Share</h2>
-		<p>Here's whre social sharing is going to be implemented.</p>
-		<p><a href="#" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>	
+		<h2>Share this quote with your friends.</h2>
+
+		<p><a href="#" onclick="share()" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>
 		<p><a href="#" data-rel="twitter" data-role="button" data-inline="true">Twitter</a></p>			
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a></p>	
 	</div><!-- /content -->
@@ -91,7 +91,12 @@
 	</div>
 </div><!-- /page popup -->
 
-
+<script type="text/javascript">
+function share() {
+	window.location = "http://www.facebook.com/sharer.php?u=" + window.location.href + "&t=Quotely";
+	//window.location = "share.php?p=facebook&u=" + url + "&t=Quotely";
+}
+</script>
 
 
 <script type="text/javascript">
@@ -118,7 +123,7 @@ $(document).on('pageshow', 'div:jqmData(role="page")', function(){
                     })
 
                 .on('swiperight.paginate', function(){
-                    console.log("binding to swipe-right "+page.attr('id'));
+                    console.log("binding to swipe-right " + page.attr('id'));
                     
                     window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
                     /*prevpage = page.prev('div[data-role="page"]');

@@ -12,6 +12,18 @@
 	<script src="./jQuery/jquery-1.8.2.min.js"></script>
 	<script src="./jQuery/jquery.mobile-1.2.0.js"></script>
 	<script type="text/javascript">
+	/**
+	  * PEDRO:
+	  * This is where I'm trying to set the iframe src dynamically,
+	  * because the URL that the iframe should contain has to be created dynamically
+	  * because it is read from variables stored in the URL. Basically, I don't care if
+	  * this part of the code remains, but I do care that the url for the iframe is the 
+	  * same as the one set below.
+	  *
+	  * Here it is copy-pasted for good measure:
+	  "http://www.facebook.com/sharer.php?u=" +getQueryVariable("u") + "&t="getQueryVariable("t")
+	  * 
+	  */
 	document.getElementById('sharepage').src = "http://www.facebook.com/sharer.php?u=" +getQueryVariable("u") + "&t="getQueryVariable("t");
 	</script>
 
@@ -30,23 +42,7 @@
 	<div data-role="header">
 		<a href="index2.html">q</a>
 		<h1 id="category">
-			<!--<?php //echo $_GET['category']; ?>-->
 		</h1>
-		<!--
-		<div class="ui-btn-right" data-role="collapsible" data-inset="true" data-iconpos="right" data-theme="a" data-content-theme="c">
-  		 <h1 id="category"><?php //echo $_GET['category']; ?></h1>
-	  		<ul>
-	    	  <li> <a href="quote.php?category=news">News </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=science">Science </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=politics">Politics </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=international">International </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=business">Business </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=sports">Sports </a></li>
-	          <li> <a href="quote.php?category=art">Art </a> </li>
-	          <li> <a href="quote.php?category=inspiration">Inspiration</a></li>
-
-	      </ul>
-		</div>-->  
 	</div><!-- /header -->
 
 	<iframe id="sharepage" src="#"></iframe>

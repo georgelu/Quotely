@@ -46,7 +46,7 @@
 	      </ul>
 		</div>-->  
 	</div><!-- /header -->
-
+	<div id="content" data-role="content">	
 	<?php 
 		$query = "";
 		$id = $_GET['id'];
@@ -55,6 +55,56 @@
 		include("content.php"); 
 
 	?>
+	<script type="text/javascript">
+	// This handles all the swiping between each page. You really
+	// needn't understand it all.
+
+	$(document).on('pageshow', 'div:jqmData(role="page")', function(){
+
+	     var page = $(this), nextpage, prevpage;
+	     // check if the page being shown already has a binding
+	      if ( page.jqmData('bound') != true ){
+	            // if not, set blocker
+	            page.jqmData('bound', true)
+	            // bind
+	                .on('swipeleft.paginate', function() {
+	                    console.log("binding to swipe-left on "+page.attr('id'));
+	                    
+	                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
+	                    /*nextpage = page.next('div[data-role="page"]');
+	                    if (nextpage.length > 0) {
+	                    	alert("hi");
+
+	                        }*/
+	                    })
+
+	                .on('swiperight.paginate', function(){
+	                    console.log("binding to swipe-right " + page.attr('id'));
+	                    
+	                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
+	                    /*prevpage = page.prev('div[data-role="page"]');
+	                    if (prevpage.length > 0) {
+	                        $.mobile.changePage(prevpage, {transition: "slide",
+	                        	reverse: true}, true, true);
+	                        };*/
+
+	                     });
+	            }
+	        });
+	function getQueryVariable(variable) {
+	    var query = window.location.search.substring(1);
+	    var vars = query.split('&');
+	    for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        if (decodeURIComponent(pair[0]) == variable) {
+	            return decodeURIComponent(pair[1]);
+	        }
+	    }
+	    console.log('Query variable %s not found', variable);
+	}
+
+	</script>
+	</div><!-- /content -->
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
@@ -99,55 +149,7 @@ function share() {
 </script>
 
 
-<script type="text/javascript">
-// This handles all the swiping between each page. You really
-// needn't understand it all.
 
-$(document).on('pageshow', 'div:jqmData(role="page")', function(){
-
-     var page = $(this), nextpage, prevpage;
-     // check if the page being shown already has a binding
-      if ( page.jqmData('bound') != true ){
-            // if not, set blocker
-            page.jqmData('bound', true)
-            // bind
-                .on('swipeleft.paginate', function() {
-                    console.log("binding to swipe-left on "+page.attr('id'));
-                    
-                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
-                    /*nextpage = page.next('div[data-role="page"]');
-                    if (nextpage.length > 0) {
-                    	alert("hi");
-
-                        }*/
-                    })
-
-                .on('swiperight.paginate', function(){
-                    console.log("binding to swipe-right " + page.attr('id'));
-                    
-                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
-                    /*prevpage = page.prev('div[data-role="page"]');
-                    if (prevpage.length > 0) {
-                        $.mobile.changePage(prevpage, {transition: "slide",
-                        	reverse: true}, true, true);
-                        };*/
-
-                     });
-            }
-        });
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable) {
-            return decodeURIComponent(pair[1]);
-        }
-    }
-    console.log('Query variable %s not found', variable);
-}
-
-</script>
 
 </body>
 </html>

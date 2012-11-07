@@ -1,4 +1,4 @@
-<div id="content" data-role="content">	
+
 		<?php
 			include("config.php");
 
@@ -18,10 +18,10 @@
 				// you won’t land here.
 				echo "<blockquote id='quotation'>" . $row["quote"] . "</blockquote>";
 				echo "<cite id='speaker'><p><a href='" . $row['wikipedia'] . "'>-" . $row["speaker"] . "</p></cite>";
-				echo "<small id='source'><a href='" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
+				echo "<small id='source'><a href='source.php?u=" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
 
 
 			} 
 		?>
 		
-	</div><!-- /content -->
+	

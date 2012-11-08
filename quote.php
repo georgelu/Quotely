@@ -36,12 +36,10 @@
 				<a href="quote.php?category=news&id=1">
 					<div data-role="collapsible">
 					<h3>News</h3>
-					<ul>
-						<li> <a href="quote.php?subcat=politics&subid=1"><h3>Politics</h3></a> </li>
-						<li> <a href="quote.php?subcat=international&subid=1"><h3>International</h3></a> </li>
-						<li> <a href="quote.php?subcat=business&subid=1"><h3>Business</h3></a> </li>
-						<li> <a href="quote.php?subcat=sports&subid=1"><h3>Sports</h3></a> </li>
-					</ul>
+					<p><a href="quote.php?subcat=politics&subid=1">Politics</a> <br>
+					<a href="quote.php?subcat=international&subid=1">International</a> <br>
+					<a href="quote.php?subcat=business&subid=1">Business</a> <br>
+					<a href="quote.php?subcat=sports&subid=1">Sports</a> </p>
 				</div>
 				</a>
 				<a href="quote.php?category=art&id=1">

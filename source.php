@@ -26,7 +26,7 @@
 	
 			
 	<div data-role="header">
-		<a href="index2.html">q</a>
+		<a href="index2.html">Home</a>
 		<h1 id="category">
 		</h1>
 

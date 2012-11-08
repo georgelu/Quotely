@@ -100,7 +100,12 @@
 	                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) - 1);
 
 	                    } else {
-	                    	window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
+	                    	var id = parseInt(getQueryVariable('id'));
+	                    	if (id - 1 < 1) {
+	                    		window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + id;
+	            			} else {
+	            				window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (id - 1);
+	            			}
 	                    }
 
 	                 });

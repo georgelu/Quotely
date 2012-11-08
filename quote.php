@@ -139,7 +139,7 @@ function sharefb() {
 
 <script type="text/javascript">
 function sharetw() {	
-	window.location = "https://twitter.com/intent/tweet?url=" + window.location.href.replace(/&/g, '%26') + "&text=Quotely&original_referer=" + window.location.href.replace(/&/g, '%26');
+	window.open("https://twitter.com/intent/tweet?url=" + window.location.href.replace(/&/g, '%26') + "&text=Quotely&original_referer=" + window.location.href.replace(/&/g, '%26'));
 }
 </script>
 

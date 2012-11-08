@@ -50,7 +50,7 @@
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
-				<li><a href="index2.html" id="back" data-icon="custom" class="ui-btn">Back</a></li>
+				
 				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
 			</ul>
 		</div>

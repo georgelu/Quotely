@@ -14,12 +14,11 @@
 
 			while ($row = mysql_fetch_assoc($result)) {
 
-				// You will get here is a table called sometable
-				// and a username test and password test exists. If it doesn’t exist
-				// you won’t land here.
 				echo "<blockquote id='quotation'>" . $row["quote"] . "</blockquote>";
-				echo "<cite id='speaker'><p><a href='" . $row['wikipedia'] . "'>-" . $row["speaker"] . "</p></cite>";
-				echo "<small id='source'><a href='source.php?u=" . $row['sourcelink'] . "'>+ ". $row["source"] . " &raquo;</a></small>";
+				echo "<cite id='speaker'><p>- " . $row["speaker"] . "</p></cite>";
+				echo "<a target='_blank' href='" . $row['wikipedia'] . "'><small>+ Read more about this speaker at Wikipedia &raquo;</small></a>";
+				
+				echo "<p><small id='source'><a href='source.php?u=" . $row['sourcelink'] . "'>+ See the full story at ". $row["source"] . " &raquo;</a></small></p>";
 
 
 			} 

@@ -25,8 +25,38 @@
 		
 	<div data-role="header">
 		<a href="index2.html">Home</a>
+
 		<h1 id="category">
+			<?php echo $_GET['category']; ?>
 		</h1>
+
+		<a href="#popupAccordion" data-rel="popup" data-role="button" data-inline="true">Categories</a>
+ 		<div data-role="popup" id="popupAccordion" data-transition="slideup" data-theme="c" style="width:300px;">
+			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" style="margin:0;">
+				<a href="quote.php?category=news&id=1">
+					<div data-role="collapsible">
+					<h3>News</h3>
+					<ul>
+						<li> <a href="quote.php?subcat=politics&subid=1"><h3>Politics</h3></a> </li>
+						<li> <a href="quote.php?subcat=international&subid=1"><h3>International</h3></a> </li>
+						<li> <a href="quote.php?subcat=business&subid=1"><h3>Business</h3></a> </li>
+						<li> <a href="quote.php?subcat=sports&subid=1"><h3>Sports</h3></a> </li>
+					</ul>
+				</div>
+				</a>
+				<a href="quote.php?category=art&id=1">
+				<div data-role="collapsible">
+					<h3>Arts</h3>
+
+				</div>
+				</a>
+				<a href="quote.php?category=inspiration&id=1">
+				<div data-role="collapsible">
+					<h3>Thoughts</h3>
+				</div>
+				</a>
+			</div>
+		</div>
 		 
 	</div><!-- /header -->
 	<div id="content" data-role="content">	
@@ -92,12 +122,20 @@
 	}
 
 	</script>
+	
+	<a href="#help" data-rel="popup" data-role="button" data-inline="true" data-mini="true">?</a>
+		
+		<div data-role="popup" id="help">
+			<p><strong>Confused?</strong><br>
+				Try swiping to view another quotation.<br>
+				<small>Click outside of the box to go back.</small></p>
+		</div>
 	</div><!-- /content -->
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
-				<li><a href="index2.html" id="back" data-icon="custom" class="ui-btn">Back</a></li>
+				
 				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
 			</ul>
 		</div>
@@ -112,7 +150,7 @@
 		<h1>Share</h1>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="a">	
+	<div data-role="content" data-theme="b">	
 		<h2>Share this quote with your friends.</h2>
 
 		<p><a href="#" onclick="sharefb()" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>
@@ -125,10 +163,12 @@
 			<ul>
 				<!--<li><a href="#one" id="backOne" data-icon="custom" class="ui-btn">Cancel</a></li>-->
  				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn-active">Share</a></li>
+
 			</ul>
 		</div>
 	</div>
 </div><!-- /page popup -->
+
 
 <script type="text/javascript">
 function sharefb() {

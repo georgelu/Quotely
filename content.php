@@ -1,8 +1,9 @@
 
 		<?php
 			include("config.php");
-
-			if ($id) {
+			if ($subid) {
+				$query = "select * from quotely where subcat = '" . $subcat . "' AND subid = '" . $subid ."'";
+			} else if ($id) {
 				$query = "select * from quotely where category = '" . $category . "' AND id = '" . $id ."'";
 			} else {
 				$query = "select * from quotely where category = '" . $category . "' AND id = '1'";

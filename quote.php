@@ -22,34 +22,18 @@
 
 <!-- Start of first page: #one -->
 <div data-role="page" id="one" data-theme="c" data-content-theme="c">
-
-	
-			
+		
 	<div data-role="header">
-		<a href="index2.html">q</a>
+		<a href="index2.html">Home</a>
 		<h1 id="category">
-			<!--<?php //echo $_GET['category']; ?>-->
 		</h1>
-		<!--
-		<div class="ui-btn-right" data-role="collapsible" data-inset="true" data-iconpos="right" data-theme="a" data-content-theme="c">
-  		 <h1 id="category"><?php //echo $_GET['category']; ?></h1>
-	  		<ul>
-	    	  <li> <a href="quote.php?category=news">News </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=science">Science </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=politics">Politics </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=international">International </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=business">Business </a></li>
-	    	  <li> <a href="quote.php?category=news&subcategory=sports">Sports </a></li>
-	          <li> <a href="quote.php?category=art">Art </a> </li>
-	          <li> <a href="quote.php?category=inspiration">Inspiration</a></li>
-
-	      </ul>
-		</div>-->  
+		 
 	</div><!-- /header -->
 	<div id="content" data-role="content">	
 	<?php 
 		$query = "";
 		$id = $_GET['id'];
+		$subcat = $_GET['subcat'];
 		$category = $_GET['category'];
 	
 		include("content.php"); 
@@ -69,26 +53,19 @@
 	            // bind
 	                .on('swipeleft.paginate', function() {
 	                    console.log("binding to swipe-left on "+page.attr('id'));
-	                    
+	                    var subcat = getQueryVariable("subcat");
 	                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
-	                    /*nextpage = page.next('div[data-role="page"]');
-	                    if (nextpage.length > 0) {
-	                    	alert("hi");
-
-	                        }*/
-	                    })
+	
+	                 })
 
 	                .on('swiperight.paginate', function(){
 	                    console.log("binding to swipe-right " + page.attr('id'));
 	                    
+	                    var subcat = getQueryVariable("subcat");
 	                    window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) - 1);
-	                    /*prevpage = page.prev('div[data-role="page"]');
-	                    if (prevpage.length > 0) {
-	                        $.mobile.changePage(prevpage, {transition: "slide",
-	                        	reverse: true}, true, true);
-	                        };*/
 
-	                     });
+
+	                 });
 	            }
 	        });
 	function getQueryVariable(variable) {
@@ -101,6 +78,7 @@
 	        }
 	    }
 	    console.log('Query variable %s not found', variable);
+	    return null;
 	}
 
 	</script>
@@ -127,24 +105,31 @@
 	<div data-role="content" data-theme="a">	
 		<h2>Share this quote with your friends.</h2>
 
-		<p><a href="#" onclick="share()" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>
-		<p><a href="#" data-rel="twitter" data-role="button" data-inline="true">Twitter</a></p>			
+		<p><a href="#" onclick="sharefb()" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>
+		<p><a href="#" onclick="sharetw()" data-role="button" data-inline="true">Twitter</a></p>			
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a></p>	
 	</div><!-- /content -->
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
-				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn-active">Share</a></li>
+				<!--<li><a href="#one" id="backOne" data-icon="custom" class="ui-btn">Cancel</a></li>-->
+ 				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn-active">Share</a></li>
 			</ul>
 		</div>
 	</div>
 </div><!-- /page popup -->
 
 <script type="text/javascript">
-function share() {
-	window.location = "http://www.facebook.com/sharer.php?u=" + window.location.href + "&t=Quotely";
-	//window.location = "share.php?p=facebook&u=" + url + "&t=Quotely";
+function sharefb() {
+	window.open("http://www.facebook.com/sharer.php?u=" + window.location.href.replace(/&/g, '%26') + "&t=Quotely");
+	//window.location = "https://www.facebook.com/dialog/feed?link=" + window.location.href.replace(/&/g, '%26') + "&name=Quotely&caption=Check%20out%20%this%20quotation%20from%20quotely&redirect_uri=" + window.location.href.replace(/&/g, '%26');
+}
+</script>
+
+<script type="text/javascript">
+function sharetw() {	
+	window.location = "https://twitter.com/intent/tweet?url=" + window.location.href.replace(/&/g, '%26') + "&text=Quotely&original_referer=" + window.location.href.replace(/&/g, '%26');
 }
 </script>
 

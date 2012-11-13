@@ -23,7 +23,7 @@
 	
 
 <!-- Start of first page: #one -->
-<div data-role="page" id="one" data-theme="c" data-content-theme="c">
+<div data-role="page" id="quote" data-theme="c" data-content-theme="c">
 		
 	<div data-role="header">
 		<a href="index2.html">Home</a>
@@ -32,21 +32,39 @@
 			<?php echo $_GET['category']; ?>
 		</h1>
 
+		<?php include("header.php"); ?>
+		<!--
 		<a href="#popupAccordion" data-rel="popup" data-role="button" data-inline="true">Categories</a>
  		<div data-role="popup" id="popupAccordion" data-transition="slideup" data-theme="c" style="width:300px;">
  			<div data-role="controlgroup">
 				<div data-role="collapsible" data-theme="c" data-content-theme="d" style="margin:0;" >
-					<h3>News</a></h3>
+					<h3>News</h3>
 					<p><a href="quote.php?category=news&id=1">All News</a> </p>
 					<p><a href="quote.php?subcat=politics&subid=1">Politics</a> </p>
 					<p><a href="quote.php?subcat=international&subid=1">International</a></p>
 					<p><a href="quote.php?subcat=business&subid=1">Business</a> </p>
 					<p><a href="quote.php?subcat=sports&subid=1">Sports</a> </p>
-				</div>					
-				<a href="quote.php?category=art&id=1" data-role="button" data-theme="c" data-inset="false">Arts</a>
-				<a href="quote.php?category=inspiration&id=1" data-role="button" data-theme="c" data-inset="false">Thoughts</a>
-			</div>
-		</div>
+				</div>			
+				<div data-role="collapsible" data-theme="c" data-content-theme="d" style="margin:0;" >
+					<h3>Arts</h3>
+					<p><a href="quote.php?category=art&id=1">All Arts</a> </p>
+					<p><a href="quote.php?subcat=music&subid=1">Music</a> </p>
+					<p><a href="quote.php?subcat=literature&subid=1">Literature</a></p>
+					<p><a href="quote.php?subcat=visual&subid=1">Visual</a> </p>
+	
+				</div>
+				<div data-role="collapsible" data-theme="c" data-content-theme="d" style="margin:0;" >
+					<h3>Inspiration</h3>
+					<p><a href="quote.php?category=art&id=1">All Inspiration</a> </p>
+					<p><a href="quote.php?subcat=philosophical&subid=1">Philosophical</a> </p>
+					<p><a href="quote.php?subcat=motivational&subid=1">Motivational</a></p>
+					<p><a href="quote.php?subcat=humor&subid=1">Humor</a> </p>
+	
+				</div>-->				
+				<!--<a href="quote.php?category=art&id=1" data-role="button" data-theme="c" data-inset="false">Arts</a>
+				<a href="quote.php?category=inspiration&id=1" data-role="button" data-theme="c" data-inset="false">Thoughts</a>-->
+			<!--</div>
+		</div>-->
 		 
 	</div><!-- /header -->
 	<div id="content" data-role="content">	
@@ -64,6 +82,12 @@
 	// This handles all the swiping between each page. You really
 	// needn't understand it all.
 
+/*
+if($.mobile.activePage.attr('id') != 'page1')
+    {
+        alert("Right");   
+    }
+    */
 	$(document).on('pageshow', 'div:jqmData(role="page")', function(){
 
 	     var page = $(this), nextpage, prevpage;
@@ -73,32 +97,41 @@
 	            page.jqmData('bound', true)
 	            // bind
 	                .on('swipeleft.paginate', function() {
-	                    console.log("binding to swipe-left on "+page.attr('id'));
-	                    var subcat = getQueryVariable('subcat');
-	                    if (subcat != null) {
-	                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) + 1);
+	                	if($.mobile.activePage.attr('id') == 'quote') {
+		                    console.log("binding to swipe-left on "+page.attr('id'));
+		                    var subcat = getQueryVariable('subcat');
+		                    if (subcat != null) {
+		                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) + 1);
 
-	                    } else {
-	                    	window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
-	                    }
+		                    } else {
+		                    	window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
+		                    }
+		                }
 	
 	                 })
 
 	                .on('swiperight.paginate', function(){
-	                    console.log("binding to swipe-right " + page.attr('id'));
-	                    
-	                    var subcat = getQueryVariable('subcat');
-	                    if (subcat != null) {
-	                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) - 1);
+	                	if($.mobile.activePage.attr('id') == 'quote') {
+		                    console.log("binding to swipe-right " + page.attr('id'));
+		                    
+		                    var subcat = getQueryVariable('subcat');
+		                    var subid = parseInt(getQueryVariable('subid'));
+		                    if (subcat != null) {
+		                    	if (subid - 1 < 1) {
+		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + subid;
 
-	                    } else {
-	                    	var id = parseInt(getQueryVariable('id'));
-	                    	if (id - 1 < 1) {
-	                    		window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + id;
-	            			} else {
-	            				window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (id - 1);
-	            			}
-	                    }
+		                    	} else {
+		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + (subid - 1);
+		                    	}
+		                    } else {
+		                    	var id = parseInt(getQueryVariable('id'));
+		                    	if (id - 1 < 1) {
+		                    		window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + id;
+		            			} else {
+		            				window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (id - 1);
+		            			}
+		                    }
+		                }
 
 	                 });
 	            }
@@ -133,6 +166,7 @@
 				
 				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
 			</ul>
+
 		</div>
 	</div>
 

@@ -30,6 +30,9 @@
 	<div data-role="header">
 		<a href="index2.html">Home</a>
 		<h1 id="category"> </h1>
+		
+		<?php include("header.php") ?>
+		<!--
 		<a href="#popupAccordion" data-rel="popup" data-role="button" data-inline="true">Categories</a>
  		<div data-role="popup" id="popupAccordion" data-transition="slideup" data-theme="c" style="width:300px;">
  			<div data-role="controlgroup">
@@ -45,11 +48,12 @@
 				<a href="quote.php?category=inspiration&id=1" data-role="button" data-theme="c" data-inset="false">Thoughts</a>
 			</div>
 		</div>
+	-->
 
 	</div><!-- /header -->
 
 	<div id="content" data-role="content">
-		<iframe src="<?php echo $_GET['u']; ?>" width="100%" height="350px"></iframe>
+		<iframe src="<?php echo $_GET['u']; ?>" frameborder="0" border="0" width="100%" height="350px"></iframe>
 
 	
 	</div><!-- /content -->

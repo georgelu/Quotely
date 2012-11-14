@@ -158,9 +158,14 @@ if($.mobile.activePage.attr('id') != 'page1')
 				Try swiping to view another quotation.<br>
 				<small>Click outside of the box to go back.</small></p>
 		</div>
+		<div style="text-align: center ;">
+			<br>
+			<img src="paginate-1.png">
+		</div>
 	</div><!-- /content -->
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
 				

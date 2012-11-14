@@ -32,8 +32,6 @@
 		<h1 id="category"></h1>
 
 		<?php include("header.php") ?>
-		
-
 	</div><!-- /header -->
 
 	<div id="content" data-role="content">	

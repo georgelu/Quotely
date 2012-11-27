@@ -7,7 +7,7 @@
 		</div>
 		
 		<div data-role="popup" id="popupAccordion2"  data-corners="false" data-transition="slideup" data-theme="c" style="width:300px;">
-					<a href="quote.php?subcat=art&subid=1" data-role="button" data-theme="c" data-corners="false">Arts</a>
+					<a href="quote.php?category=art&id=1" data-role="button" data-theme="c" data-corners="false">Arts</a>
 					<a href="quote.php?subcat=music&subid=1" data-role="button" data-theme="c" data-corners="false">&nbsp;&nbsp;Music</a>
 					<a href="quote.php?subcat=literature&subid=1" data-role="button" data-theme="c" data-corners="false">&nbsp;&nbsp;Literature</a>
 					<a href="quote.php?subcat=visual&subid=1" data-role="button" data-theme="c" data-corners="false">&nbsp;&nbsp;Visual</a>

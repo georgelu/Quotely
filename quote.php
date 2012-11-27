@@ -51,6 +51,7 @@
 		$category = $_GET['category'];
 		$subcat = $_GET['subcat'];
 		$subid = $_GET['subid'];
+		$cur_id = '0';
 	
 		include("content.php"); 
 
@@ -59,12 +60,6 @@
 	// This handles all the swiping between each page. You really
 	// needn't understand it all.
 
-/*
-if($.mobile.activePage.attr('id') != 'page1')
-    {
-        alert("Right");   
-    }
-    */
 	$(document).on('pageshow', 'div:jqmData(role="page")', function(){
 
 	     var page = $(this), nextpage, prevpage;
@@ -77,11 +72,16 @@ if($.mobile.activePage.attr('id') != 'page1')
 	                	if($.mobile.activePage.attr('id') == 'quote') {
 		                    console.log("binding to swipe-left on "+page.attr('id'));
 		                    var subcat = getQueryVariable('subcat');
+
+		                    var php_id = "<?php echo $id; ?>";
 		                    if (subcat != null) {
-		                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) + 1);
+		                    	window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(php_id) + 1);
+
+		                    	//window.location = "quote.php?subcat=" + subcat + "&subid=" + (parseInt(getQueryVariable('subid')) + 1);
 
 		                    } else {
-		                    	window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
+		                    	window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(php_id) + 1);
+		                    	//window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (parseInt(getQueryVariable('id')) + 1);
 		                    }
 		                }
 	
@@ -92,20 +92,20 @@ if($.mobile.activePage.attr('id') != 'page1')
 		                    console.log("binding to swipe-right " + page.attr('id'));
 		                    
 		                    var subcat = getQueryVariable('subcat');
-		                    var subid = parseInt(getQueryVariable('subid'));
+		                    var php_id = parseInt("<?php echo $id; ?>");
 		                    if (subcat != null) {
-		                    	if (subid - 1 < 1) {
-		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + subid;
+		                    	if (php_id - 1 < 1) {
+		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + php_id;
 
 		                    	} else {
-		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + (subid - 1);
+		                    		window.location = "quote.php?subcat=" + subcat + "&subid=" + (php_id - 1);
 		                    	}
 		                    } else {
-		                    	var id = parseInt(getQueryVariable('id'));
-		                    	if (id - 1 < 1) {
-		                    		window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + id;
+		                    	//var id = parseInt(getQueryVariable('id'));
+		                    	if (php_id - 1 < 1) {
+		                    		window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + php_id;
 		            			} else {
-		            				window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (id - 1);
+		            				window.location = "quote.php?category=" + getQueryVariable('category') + "&id=" + (php_id - 1);
 		            			}
 		                    }
 		                }

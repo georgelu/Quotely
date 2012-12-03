@@ -7,17 +7,22 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
  	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="./jQuery/jquery.mobile-1.2.0.css" />
 	
-	<script src="//cdn.optimizely.com/js/140796700.js"></script>
-
-	<link rel="stylesheet" href="./jquery.mobile-1.2.0/jquery.mobile-1.2.0.css" />
-
+	<link rel="stylesheet" href="jquery.mobile-1.2.0/jquery.mobile-1.2.0.css" />
+	<link rel="stylesheet" href="themes/quotelytheme1.min.css" />
 	<script src="./jQuery/jquery-1.8.2.min.js"></script>
 	<script src="./jquery.mobile-1.2.0/jquery.mobile-1.2.0.js"></script>
 	<style> 
 		.ui-btn {text-align: left} 
+		
+		#content {
+			background:url(darkercity.jpg);
+			background-size:320px 460px;
+			background-repeat:no-repeat;
+			border-width:0px;
+		}
 	</style>
+
 
 </head> 
 
@@ -27,15 +32,15 @@
 	
 
 <!-- Start of first page: #one -->
-<div data-role="page" id="quote" data-theme="c" data-content-theme="c">
+<div data-role="page" id="quote" data-theme="a" data-content-theme="a">
 		
-	<div data-role="header">
+	<div data-role="header" style="border-color:white;">
 		<a href="index2.html">Home</a>
 
 		<h1 id="category">
 			<?php echo $_GET['category']; ?>
 			<a href="#help" data-rel="popup" data-theme="a" data-icon="info" data-mini="true" data-iconpos="notext"</a>
-			<div data-role="popup" id="help">
+			<div data-role="popup" id="help" style="color:black;">
 				<p><strong>Confused?</strong><br>
 					Try swiping to view another quotation.<br>
 					<small>Click outside of the box to go back.</small></p>
@@ -44,7 +49,7 @@
 
 		<?php include("header.php"); ?>		 
 	</div><!-- /header -->
-	<div id="content" data-role="content">	
+	<div id="content" data-role="content" style="height:340px;">	
 	<?php 
 		$query = "";
 		$id = $_GET['id'];
@@ -130,8 +135,9 @@
 	
 		<div style="text-align: center ;">
 			<br>
-			<img src="paginate-1.png">
+			<img src="paginate-white.png">
 		</div>
+		<br>
 	</div><!-- /content -->
 
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
@@ -139,7 +145,7 @@
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
 				
-				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn">Share</a></li>
+				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn" style="border-width:0px;border-color:white;">Share</a></li>
 			</ul>
 
 		</div>
@@ -154,7 +160,7 @@
 		<h1>Share</h1>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="b">	
+	<div data-role="content" data-theme="a" style="color:black;">	
 		<h2>Share this quote with your friends.</h2>
 
 		<p><a href="#" onclick="sharefb()" data-rel="facebook" data-role="button" data-inline="true">Facebook</a></p>

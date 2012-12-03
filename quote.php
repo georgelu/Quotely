@@ -31,6 +31,7 @@
 		
 	<div data-role="header">
 		<a href="index2.html">Home</a>
+		<!--<a href="#popup">Share</a>	-->
 
 		<h1 id="category">
 			<?php echo $_GET['category']; ?>
@@ -39,7 +40,10 @@
 				<p><strong>Confused?</strong><br>
 					Try swiping to view another quotation.<br>
 					<small>Click outside of the box to go back.</small></p>
-			</div>	
+			</div>
+				
+			
+
 		</h1>
 
 		<?php include("header.php"); ?>		 
@@ -55,7 +59,10 @@
 	
 		include("content.php"); 
 
+
+
 	?>
+	<a href="#popup" data-role="button" data-inline="true" data-mini="true">Share this story</a>
 	<script type="text/javascript">
 	// This handles all the swiping between each page. You really
 	// needn't understand it all.
@@ -133,7 +140,7 @@
 			<img src="paginate-1.png">
 		</div>
 	</div><!-- /content -->
-
+<!--
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
@@ -143,7 +150,7 @@
 			</ul>
 
 		</div>
-	</div>
+	</div>-->
 
 </div><!-- /page one -->
 
@@ -161,16 +168,16 @@
 		<p><a href="#" onclick="sharetw()" data-role="button" data-inline="true">Twitter</a></p>			
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a></p>	
 	</div><!-- /content -->
-	
+	<!--
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 			<ul>
-				<!--<li><a href="#one" id="backOne" data-icon="custom" class="ui-btn">Cancel</a></li>-->
+				
  				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn-active">Share</a></li>
 
 			</ul>
 		</div>
-	</div>
+	</div>-->
 </div><!-- /page popup -->
 
 

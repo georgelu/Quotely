@@ -1,0 +1,13 @@
+{
+  "name": "Quotely",
+  "description": "Get snippets of news from first-hand quotations and primary sources. Stay informed quickly, easily, and simply.",
+  "launch_path": "/index2.html",
+  "icons": {
+    "128": "/quotely-icon.png"
+  },
+  "developer": {
+    "name": "Nisha Masharani, Pedro Sanzovo, George Lu",
+    "url": "http://cs147.stanford.edu"
+  },
+  "default_locale": "en"
+}

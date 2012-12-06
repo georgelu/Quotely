@@ -25,11 +25,12 @@
 
 <!-- Start of first page: #one -->
 <div data-role="page" id="one" data-theme="c" data-content-theme="c">
-
-	
-			
 	<div data-role="header">
-		<a href="index2.html">Home</a>
+		<?php
+			$category = $_GET['c'];
+			$id = $_GET['i'];
+		?>
+		<a href="<?php echo 'quote.php?category='.$category.'&id='.$id; ?>">Back</a>
 		<h1 id="category"></h1>
 
 		<?php include("header.php") ?>
@@ -38,19 +39,9 @@
 	<div id="content" data-role="content">	
 		<iframe src="<?php echo $_GET['u']; ?>" frameborder="0" border="0" width="100%" height="350px"></iframe>
 		
-	
 	</div><!-- /content -->
 
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
-			<ul>
-				<?php
-				$category = $_GET['c'];
-				$id = $_GET['i'];
-				?>
-				<li><a href="<?php echo 'quote.php?category='.$category.'&id='.$id; ?>" id="back" data-icon="custom" class="ui-btn">Back</a></li>
-		</div>
-	</div>
+
 
 </div><!-- /page one -->
 

@@ -9,14 +9,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	
 	<link rel="stylesheet" href="jquery.mobile-1.2.0/jquery.mobile-1.2.0.css" />
-	<link rel="stylesheet" href="themes/quotelytheme1.min.css" />
+	<link rel="stylesheet" href="themes/quotelytheme2.min.css" />
 	<script src="./jQuery/jquery-1.8.2.min.js"></script>
 	<script src="./jquery.mobile-1.2.0/jquery.mobile-1.2.0.js"></script>
 	<style> 
 		.ui-btn {text-align: left} 
 		
 		#content {
-			background:url(darkercity.jpg);
+			background:url(darkathens.jpg);
 			background-size:320px 460px;
 			background-repeat:no-repeat;
 			border-width:0px;
@@ -26,7 +26,6 @@
 
 </head> 
 
-	
 <body> 
 
 	
@@ -35,20 +34,18 @@
 <div data-role="page" id="quote" data-theme="a" data-content-theme="a">
 		
 	<div data-role="header" style="border-color:white;">
-		<a href="index2.html">Home</a>
+		<a href="index.html" data-icon="home">Home</a>
 		<!--<a href="#popup">Share</a>	-->
 
 		<h1 id="category">
 			<?php echo $_GET['category']; ?>
-			<a href="#help" data-rel="popup" data-theme="a" data-icon="info" data-mini="true" data-iconpos="notext"</a>
+			<?php echo $_GET['subcat']; ?>
+			<a href="#help" data-rel="popup" data-theme="a" data-icon="info" data-mini="true" data-iconpos="notext" style="border-width:0px;"</a>
 			<div data-role="popup" id="help" style="color:black;">
 				<p><strong>Confused?</strong><br>
 					Try swiping to view another quotation.<br>
-					<small>Click outside of the box to go back.</small></p>
+					Click outside of the box to go back.</p>
 			</div>
-				
-			
-
 		</h1>
 
 		<?php include("header.php"); ?>		 
@@ -146,17 +143,6 @@
 		</div>
 		<br>
 	</div><!-- /content -->
-<!--
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
-			<ul>
-				
-				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn" style="border-width:0px;border-color:white;">Share</a></li>
-			</ul>
-
-		</div>
-	</div>-->
 
 </div><!-- /page one -->
 
@@ -174,23 +160,12 @@
 		<p><a href="#" onclick="sharetw()" data-role="button" data-inline="true">Twitter</a></p>			
 		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a></p>	
 	</div><!-- /content -->
-	<!--
-	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
-		<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
-			<ul>
-				
- 				<li><a href="#popup" id="share" data-icon="custom" class="ui-btn-active">Share</a></li>
-
-			</ul>
-		</div>
-	</div>-->
 </div><!-- /page popup -->
 
 
 <script type="text/javascript">
 function sharefb() {
 	window.open("http://www.facebook.com/sharer.php?u=" + window.location.href.replace(/&/g, '%26') + "&t=Quotely");
-	//window.location = "https://www.facebook.com/dialog/feed?link=" + window.location.href.replace(/&/g, '%26') + "&name=Quotely&caption=Check%20out%20%this%20quotation%20from%20quotely&redirect_uri=" + window.location.href.replace(/&/g, '%26');
 }
 </script>
 
@@ -198,6 +173,17 @@ function sharefb() {
 function sharetw() {	
 	window.open("https://twitter.com/intent/tweet?url=" + window.location.href.replace(/&/g, '%26') + "&text=Quotely&original_referer=" + window.location.href.replace(/&/g, '%26'));
 }
+</script>
+
+
+<script type="text/javascript">
+window.addEventListener("load",function() {
+  // Set a timeout...
+  setTimeout(function(){
+    // Hide the address bar!
+    window.scrollTo(0, 1);
+  }, 0);
+});
 </script>
 
 

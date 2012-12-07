@@ -29,8 +29,17 @@
 		<?php
 			$category = $_GET['c'];
 			$id = $_GET['i'];
+
+			if ($category && $id) {
+				
+				echo "<a href='quote.php?category=".$category."&id=".$id. "'>Back</a>";
+			} else {
+				$category = $_GET['sc'];
+				$id = $_GET['si'];
+				echo "<a href='quote.php?subcat=".$category."&subid=".$id. "'>Back</a>";
+			}
 		?>
-		<a href="<?php echo 'quote.php?category='.$category.'&id='.$id; ?>">Back</a>
+		
 		<h1 id="category"></h1>
 
 		<?php include("header.php") ?>
